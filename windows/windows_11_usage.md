@@ -45,7 +45,25 @@ cat path_to_file | clip
  * Process - default if you create new vars in the shell
  * User
  * Machine (aka system)
- 
+
+### The PowerShell way
+
+* List
+
+```
+Get-ChildItem Env:
+```
+* Set
+
+```
+Set-Item -Path Env:\BB_TOKEN -Value 'BAR'
+```
+* Get
+```
+Get-Item -Path Env:\Foo*
+```
+
+### The Command Shell way
  * List env vars
  
  ```
