@@ -86,7 +86,9 @@ notepad $PROFILE
 Add the notepad++ path, save, and open a new shell:
 
 ```
-Set-Alias n "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Notepad++.lnk"
+$Env:Path += ";C:\Program Files\Notepad++\"
+Set-Alias -Name n -Value notepad++
+Set-Alias -Name vi -Value notepad++
 function grep {
   $input | out-string -stream | select-string $args
 }
@@ -121,11 +123,11 @@ To use:
 winget install JanDeDobbeleer.OhMyPosh -s winget
 ```
 
-Open new terminal:
+Open new terminal **as Administrator**:
 
 ```
 oh-my-posh font install
-# select one and note the name
+# select the Meslo LGM NF one
 ```
 
 In the terminal, press Ctrl-Shift-, and add
@@ -171,6 +173,54 @@ Restart shell
  pyenv global 3.12.0
 ```
 
+## Install Windows Sybsystem for Linux
+
+Open Terminal as Administrator, and type:
+
+```
+wsl --install
+```
+
+This will install ubuntu by default.
+
+To see other available distros:
+```
+wsl --list --online
+```
+
+To change distro:
+
+```
+wsl --install -d <distroname>
+```
+
+## Install Docker Desktop
+
+```
+winget isntall docker -s winget
+```
+
+Log out and back in, then find Docker Desktop in Start menu and run as regular user.
+
+To verify it works:
+
+```
+docker ps
+```
+
+
+
+## Install Terraform
+
+```
+winget install Hashicorp.Terraform
+```
+
+## Install Azure CLI
+
+```
+winget install Microsoft.AzureCLI
+```
 
 
 
