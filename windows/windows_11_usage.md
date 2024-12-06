@@ -46,41 +46,31 @@ cat path_to_file | clip
  * User
  * Machine (aka system)
 
-### The PowerShell way
+### Using Powershell
 
 * List
 
 ```
 Get-ChildItem Env:
+# OR
+dir Env:
 ```
 * Set
 
 ```
 Set-Item -Path Env:\BB_TOKEN -Value 'BAR'
+# OR
+$Env:BB_TOKEN = "value"
 ```
+
 * Get
 ```
 Get-Item -Path Env:\Foo*
+# OR
+cat $Env:Foo
 ```
 
-### The Command Shell way
- * List env vars
- 
- ```
- ls Env:
- ```
- 
- * Show contents of var
- 
- ```
- cat Env:Path
- # OR
- echo $Env:Path
- # OR
- $Env:Path
- ```
- 
-* Delete a env var
+* Delete
 
 Just assign empty val:
 
@@ -88,37 +78,15 @@ Just assign empty val:
 $Env:Foo = ''
 ```
 
-* Create env vars (process scope)
 
-```
-New-Item -Path Env:\Foo -Value 'Bar'
-```
-OR
-
-```
-[Environment]::SetEnvironmentVariable('Foo','Bar')
-```
-
- 
- * Make env vars persistent (machine or user scope)
- 
-Method 1: Add them to $PROFILE
- 
- ```
-$Env:CompanyUri = 'https://internal.contoso.com'
-$Env:Path += ';C:\Tools'
-```
-
-Method 2: Set with Machine or User scope
+### Set with Machine scope
 
 In powershell:
 ```
 [Environment]::SetEnvironmentVariable('Foo', 'Bar', 'Machine')
-[Environment]::SetEnvironmentVariable("TEST", "VALUE", "User")
-
 ```
 
-Method 3: Control Panel
+### Set permanently with Control Panel
 
 * Open the System Control Panel.
 * Select System.
